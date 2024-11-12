@@ -3,32 +3,31 @@ import { ProductsService } from './products.service';
 
 @Controller('products')
 export class ProductsController {
-    constructor(private readonly productServices: ProductsService) {}
+    constructor(private readonly productService: ProductsService) {}
 
     @Get('')
     getProducts() {
-        return this.productServices.getProducts();
+        return this.productService.getProducts();
     }
 
     @Get(':id')
     getProductById(@Param ('id') id: string) {
-        return this.productServices.getProductById(id);
+        return this.productService.getProductById(id);
     }
 
 
     @Post('')
     createProduct(@Body() productData: any) {
-        return this.productServices.createProduct(productData);
+        return this.productService.createProduct(productData);
     }
 
     @Put(':id')
-    updateProduct(@Param('id') id: string, @Body() productData: any) {
-        return this.productServices.updateProduct(id, productData);;
+    updateProduct(@Param('id') id:string, @Body() productDate: any){
+        return this.productService.updateProduct(id,productDate)
     }
 
     @Delete(':id') 
     deleteProduct(@Param('id') id: string) {  
-        return this.productServices.deleteProduct(id); 
+        return this.productService.deleteProduct(id); 
     }
 }
-
